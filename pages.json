@@ -5,7 +5,6 @@
       "navigationBarTitleText": "",
       "enablePullDownRefresh": false
     }
-
   }, {
     "path": "pages/cate/cate",
     "style": {
@@ -32,34 +31,31 @@
     "root": "subpkg",
     "pages": [
 
-    {
-                    "path" : "goods_detail/goods_detail",
-                    "style" :                                                                                    
-                {
-                    "navigationBarTitleText": "",
-                    "enablePullDownRefresh": false
-                }
-                
-                }
-                ,{
-                    "path" : "goods_list/goods_list",
-                    "style" :                                                                                    
-                {
-                    "navigationBarTitleText": "",
-                    "enablePullDownRefresh": false
-                }
-                
-                }
-                ,{
-                    "path" : "search/search",
-                    "style" :                                                                                    
-                {
-                    "navigationBarTitleText": "",
-                    "enablePullDownRefresh": false
-                }
-                
-                }
-            ]
+      {
+        "path": "goods_detail/goods_detail",
+        "style": {
+          "navigationBarTitleText": "",
+          "enablePullDownRefresh": false
+        }
+
+      }, {
+        "path": "goods_list/goods_list",
+        "style": {
+          "navigationBarTitleText": "",
+          "onReachBottomDistance": 150,
+          "enablePullDownRefresh": true,
+          "backgroundColor": "#F8F8F8"
+        }
+
+      }, {
+        "path": "search/search",
+        "style": {
+          "navigationBarTitleText": "",
+          "enablePullDownRefresh": false
+        }
+
+      }
+    ]
   }],
   "globalStyle": {
     "navigationBarTextStyle": "white",

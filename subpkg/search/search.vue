@@ -88,9 +88,9 @@
           url: '/subpkg/goods_detail/goods_detail?goods_id=' + goods_id
         })
       },
-      
+
       // 保存关键词的方法
-      saveSearchHistory(){
+      saveSearchHistory() {
         // 直接把关键词push到historyList数组中
         // this.historyList.push(this.keyword)
         // 解决关键词重复的问题
@@ -98,41 +98,41 @@
         const set = new Set(this.historyList)
         // 2.调用Set 对象中的delete 方法，移除对应的元素
         set.delete(this.keyword)
-        
+
         // 3.调用 Set 对象的add 方法，向 Set 中添加元素
         set.add(this.keyword)
         // 4.将 Set 对象转化为 Array 数组
         this.historyList = Array.from(set)
         // 调用 uni.setStorageSync(key,value) 将搜索记录数据持久化存储到本地,JSON.stringify()--将数组转存为字符串
-        uni.setStorageSync('kw',JSON.stringify(this.historyList))
+        uni.setStorageSync('kw', JSON.stringify(this.historyList))
       },
-      
+
       // 清空搜索历史记录
-      clean(){
+      clean() {
         this.historyList = []
-        uni.setStorageSync('kw','[]')
+        uni.setStorageSync('kw', '[]')
       },
-      
+
       // 点击跳转到商品列表页面
-      gotoGoodsList(kw){
+      gotoGoodsList(kw) {
         uni.navigateTo({
-          url:'/subpkg/goods_list/goods_list?query='+kw
+          url: '/subpkg/goods_list/goods_list?query=' + kw
         })
       }
 
     },
-    computed:{
+    computed: {
       // 解决关键字的前后顺序问题
-      histories(){
+      histories() {
         // 注意：由于数组是引用类型，所以不要直接基于数组调用原数组的resverse方法，以免修改原数组中元素的顺序
         // 而是应该新建一个内存无关的数组，再进行 reverse 反转
         return [...this.historyList].reverse()
-      },
-      
+      }
+
       //
-      
+
     },
-    onLoad(){
+    onLoad() {
       // JSON.parse()---将字符串转存为数组
       this.historyList = JSON.parse(uni.getStorageSync('kw') || '[]')
     }
@@ -168,10 +168,11 @@
       }
     }
   }
-  
-  .history-box{
+
+  .history-box {
     padding: 0 5px;
-    .history-title{
+
+    .history-title {
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -179,14 +180,15 @@
       font-size: 13px;
       border-bottom: 1px solid #efefef;
     }
-    .history-list{
+
+    .history-list {
       display: flex;
       flex-wrap: wrap;
-      .uni-tag{
+
+      .uni-tag {
         margin-top: 5px;
         margin-right: 5px;
       }
     }
   }
-  
 </style>

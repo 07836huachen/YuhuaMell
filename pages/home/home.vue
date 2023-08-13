@@ -1,5 +1,10 @@
 <template>
   <view>
+    <!-- 使用自定义的搜索组件 -->
+    <view class="search-box">
+      <my-search @myclick="gotoSearch"></my-search>
+    </view>
+
     <!-- 轮播图区域 -->
     <swiper :indicator-dots="true" :autoplay="true" :interval="3000" :duration="1000" :circular="true">
       <!-- 循环渲染轮播图的 item 项 -->
@@ -34,7 +39,8 @@
           </navigator>
           <!-- 右侧4个小图片的盒子 -->
           <view class="right-img-box">
-            <navigator class="right-img-item" v-for="(item2,i2) in item.product_list" :key="i2" v-if="i2 !== 0" :url="item2.url">
+            <navigator class="right-img-item" v-for="(item2,i2) in item.product_list" :key="i2" v-if="i2 !== 0"
+              :url="item2.url">
               <image :src="item2.image_src" :style="{width:item.product_list[0].image_width+'rpx'}" mode="widthFix">
               </image>
             </navigator>
@@ -42,7 +48,7 @@
         </view>
       </view>
     </view>
-  
+
   </view>
 </template>
 
@@ -84,6 +90,7 @@
         this.swiperList = res.message
         // uni.$showMsg('数据请求成功！')
       },
+
       // 获取首页分类导航数据的方法
       async getNavList() {
         const {
@@ -96,12 +103,13 @@
         this.navList = res.message
 
       },
+
       // 获取首页楼层数据的方法
       async getFloorList() {
         const {
           data: res
         } = await uni.$http.get('/api/public/v1/home/floordata')
-        console.log(res)
+        // console.log(res)
         if (res.meta.status !== 200) {
           return uni.$showMsg()
         }
@@ -114,6 +122,7 @@
         })
         this.floorList = res.message
       },
+
       //nav-item 项被点击时候的事件处理函数
       navClickHandler(item) {
         //判断是哪个nav
@@ -124,11 +133,27 @@
         }
       },
 
+      //点击搜索框跳转到搜索页面
+      gotoSearch() {
+        uni.navigateTo({
+          url: '/subpkg/search/search'
+        })
+      }
+
     }
   }
 </script>
 
 <style lang="scss">
+  .search-box {
+    //设置定位效果为 “ 吸顶 ”
+    position: sticky;
+    //吸顶的 “ 位置 ”
+    top:0;
+    //提高层级，防止被轮播图覆盖
+    z-index: 999;
+  }
+
   swiper {
     height: 330rpx;
 

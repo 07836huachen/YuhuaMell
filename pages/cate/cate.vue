@@ -1,5 +1,8 @@
 <template>
   <view>
+    <!-- 使用自定义的搜索组件 -->
+    <my-search @myclick="gotoSearch"></my-search>
+    
     <view class="scroll-view-container">
       <!-- 左侧的滚动视图区域 -->
       <scroll-view class="left-scroll-view" scroll-y :style="{height:wh +'px'}">
@@ -53,7 +56,7 @@
       //使用uni.getSystemInfoSync这个API获取当前所使用设备的信息
       const sysInfo = uni.getSystemInfoSync()
       // console.log(sysInfo)
-      this.wh = sysInfo.windowHeight
+      this.wh = sysInfo.windowHeight - 50
 
       //调用方法，获取分类列表数据的方法
       this.getCateList()
@@ -90,6 +93,12 @@
       gotoGoodsList(item3){
         uni.navigateTo({
           url:'/subpkg/goods_list/goods_list?cid='+item3.cat_id
+        })
+      },
+      //点击搜索框去到搜索页
+      gotoSearch(){
+        uni.navigateTo({
+          url:'/subpkg/search/search'
         })
       }
     }

@@ -53,7 +53,10 @@
 </template>
 
 <script>
+  import badgeMix from '@/mixins/tabbar-badge.js'
   export default {
+    // 将 badgeMix 混入到当前的页面中进行使用
+    mixins: [badgeMix],
     data() {
       return {
         // 轮播图的数据列表
@@ -149,7 +152,7 @@
     //设置定位效果为 “ 吸顶 ”
     position: sticky;
     //吸顶的 “ 位置 ”
-    top:0;
+    top: 0;
     //提高层级，防止被轮播图覆盖
     z-index: 999;
   }

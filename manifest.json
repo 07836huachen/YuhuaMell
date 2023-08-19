@@ -40,12 +40,16 @@
             "sdkConfigs" : {}
         }
     },
-    "quickapp" : {},
-    "mp-weixin" : {
+    "quickapp" : {},/*快应用特有相关*/
+    "mp-weixin" : {/*微信小程序特有相关*/
         "appid" : "wx24f664261c67c82c",
         "setting" : {
             "urlCheck" : true,
             "checkSiteMap":false
-        }
+        },
+        "usingComponents":true,
+        "requiredPrivateInfos":[
+          "chooseAddress"
+        ]
     }
 }

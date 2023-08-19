@@ -2,7 +2,7 @@
   <view>
     <!-- 使用自定义的搜索组件 -->
     <my-search @myclick="gotoSearch"></my-search>
-    
+
     <view class="scroll-view-container">
       <!-- 左侧的滚动视图区域 -->
       <scroll-view class="left-scroll-view" scroll-y :style="{height:wh +'px'}">
@@ -36,7 +36,10 @@
 </template>
 
 <script>
+  import badgeMix from '@/mixins/tabbar-badge.js'
   export default {
+    // 将 badgeMix 混入到当前的页面中进行使用
+    mixins: [badgeMix],
     data() {
       return {
         //当前设备的可用高度
@@ -90,15 +93,15 @@
         this.scrollTop = this.scrollTop ? 0 : 1
       },
       //点击三级分类项跳转到商品列表
-      gotoGoodsList(item3){
+      gotoGoodsList(item3) {
         uni.navigateTo({
-          url:'/subpkg/goods_list/goods_list?cid='+item3.cat_id
+          url: '/subpkg/goods_list/goods_list?cid=' + item3.cat_id
         })
       },
       //点击搜索框去到搜索页
-      gotoSearch(){
+      gotoSearch() {
         uni.navigateTo({
-          url:'/subpkg/search/search'
+          url: '/subpkg/search/search'
         })
       }
     }
